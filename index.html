@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Cle&Go – Pulizie per Airbnb</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <!-- TOPO -->
+ <section class="hero">
+  <h1>Cle&Go</h1>
+  <h2>Pulizie professionali per Airbnb e affitti brevi</h2>
+  <p>Check-out senza stress. Check-in perfetto.</p>
+  <a href="#contatti" class="btn">Richiedi una pulizia</a>
+</section>
+
+
+  <!-- SERVIZIO -->
+  <section>
+    <h3>Il servizio</h3>
+    <p>
+      Servizio specializzato nella pulizia post check-out per Airbnb
+      e strutture ricettive a breve termine.
+    </p>
+
+    <ul>
+      <li>Pulizia completa dell’alloggio</li>
+      <li>Reset dell’appartamento</li>
+      <li>Checklist professionale</li>
+      <li>Verifica finale con foto</li>
+      <li>Comunicazione rapida</li>
+    </ul>
+  </section>
+
+  <!-- COME FUNZIONA -->
+  <section>
+    <h3>Come funziona</h3>
+    <ol>
+      <li>Invii la richiesta online</li>
+      <li>Confermiamo rapidamente</li>
+      <li>Effettuiamo la pulizia</li>
+      <li>Ricevi conferma con foto</li>
+    </ol>
+  </section>
+
+  <!-- PREZZI -->
+  <section>
+    <h3>Prezzi trasparenti
+</h3>
+    <p>
+      Standard — a partire da €60<br>
+      Premium — a partire da €80
+    </p>
+  </section>
+
+  <!-- ZONA -->
+  <section>
+    <h3>Zona di servizio</h3>
+    <p>
+      Attualmente operiamo nella zona di Cologne e dintorni,
+      entro un raggio di circa 20 km.
+    </p>
+  </section>
+
+  <!-- CONTATTI -->
+  <section id="contatti">
+  <h3>Richiedi una pulizia</h3>
+
+  <form name="richiesta-pulizia" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="richiesta-pulizia">
+
+    <p>
+      <label>
+        Nome<br>
+        <input type="text" name="nome" required>
+      </label>
+    </p>
+
+    <p>
+      <label>
+        Email<br>
+        <input type="email" name="email" required>
+      </label>
+    </p>
+
+    <p>
+      <label>
+        Indirizzo dell’alloggio<br>
+        <input type="text" name="indirizzo" required>
+      </label>
+    </p>
+
+    <p>
+      <label>
+        Tipo di servizio<br>
+        <select name="servizio">
+          <option>Standard</option>
+          <option>Premium</option>
+        </select>
+      </label>
+    </p>
+
+    <p>
+      <label>
+        Messaggio<br>
+        <textarea name="messaggio"></textarea>
+      </label>
+    </p>
+
+    <p>
+      <button type="submit" class="btn">Invia richiesta</button>
+    </p>
+  </form>
+</section>
+
+</body>
+</html>
