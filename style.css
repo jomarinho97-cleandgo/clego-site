@@ -19,12 +19,6 @@ body {
   color: var(--color-text);
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
-  color: #222;
-  background-color: #ffffff;
-}
 
 /* SEÇÕES */
 section {
