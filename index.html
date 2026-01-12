@@ -21,38 +21,38 @@
   </section>
 
   <section class="section">
-    <h3>Cosa offriamo</h3>
-    <p>Che si tratti di un cambio ospite veloce o di una pulizia settimanale in ufficio, garantiamo standard elevati.</p>
+    <h3>Il servizio</h3>
+    <p>Siamo specializzati nel reset completo del tuo alloggio tra un ospite e l'altro.</p>
     <ul>
-      <li><strong>Airbnb & B&B:</strong> Reset completo, gestione biancheria e kit benvenuto.</li>
-      <li><strong>Uffici & Studi:</strong> Ambienti igienizzati per il benessere del tuo team.</li>
-      <li><strong>Case & Privati:</strong> Pulizie profonde per chi cerca il massimo ordine.</li>
-      <li><strong>Checklist:</strong> Verifica finale con foto per ogni intervento.</li>
+      <li>Pulizia profonda di ogni stanza</li>
+      <li>Cambio lenzuola e asciugamani</li>
+      <li>Rifornimento kit di benvenuto</li>
+      <li>Checklist fotografica a fine lavoro</li>
     </ul>
-  </section>
-
-  <section class="section">
-    <h3>Prezzi trasparenti</h3>
-    <p>
-      Standard — a partire da €60<br>
-      Premium — a partire da €80
-    </p>
   </section>
 
   <section class="section">
     <h3>Come funziona</h3>
     <ol>
-      <li>Contattaci per una richiesta rapida</li>
-      <li>Definiamo insieme frequenza e orari</li>
-      <li>Il nostro team effettua la pulizia</li>
-      <li>Ricevi la conferma del lavoro svolto</li>
+      <li>Invii la richiesta online</li>
+      <li>Confermiamo l'orario del check-out</li>
+      <li>Effettuiamo la pulizia professionale</li>
+      <li>Ricevi la conferma con le foto</li>
     </ol>
   </section>
 
+  <section class="section">
+    <h3>Prezzi trasparenti</h3>
+    <p>
+      <strong>Standard</strong> — a partire da €60<br>
+      <strong>Premium</strong> — a partire da €80
+    </p>
+  </section>
+
   <section id="contatti" class="section">
-    <h3>Contattaci</h3>
-    <form name="contatti-clego" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="contatti-clego">
+    <h3>Richiedi una pulizia</h3>
+    <form name="richiesta-pulizia" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="richiesta-pulizia">
 
       <p>
         <label>Nome</label>
@@ -65,16 +65,26 @@
       </p>
 
       <p>
-        <label>Tipo di spazio</label>
-        <select name="tipo_spazio">
-          <option>Airbnb / B&B</option>
-          <option>Ufficio</option>
-          <option>Casa Privata</option>
-          <option>Altro</option>
+        <label>Indirizzo del B&B</label>
+        <input type="text" name="indirizzo" required>
+      </p>
+
+      <p>
+        <label>Tipo di servizio</label>
+        <select name="servizio">
+          <option>Standard</option>
+          <option>Premium</option>
         </select>
       </p>
 
       <p>
-        <label>Indirizzo</label>
-        <input type="text" name="indirizzo" required>
+        <label>Messaggio</label>
+        <textarea name="messaggio"></textarea>
       </p>
+
+      <button type="submit" class="btn">Invia richiesta</button>
+    </form>
+  </section>
+
+</body>
+</html>
