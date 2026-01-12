@@ -1,6 +1,6 @@
 :root {
   --color-primary: #1F3D2B;   /* verde escuro */
-  --color-bg: red;        /* branco quente */
+  --color-bg: #F9FAF8        /* branco quente */
   --color-accent: #C8B89A;    /* bege premium */
   --color-text: #1A1A1A;
 }
