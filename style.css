@@ -53,6 +53,27 @@ li {
 }
 
 /* PASSO 5 — HERO SECTION */
+/* ESTILO DO LOGO */
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 40px; /* Espaço entre o nome e o slogan */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.logo span {
+  color: var(--color-accent); /* O '&' fica na cor bege premium */
+}
+
+/* AJUSTE NO H1 PARA NÃO FICAR TUDO COLADO */
+.hero h1 {
+  font-size: 56px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
 .hero {
   text-align: center;
   padding-top: 120px;
