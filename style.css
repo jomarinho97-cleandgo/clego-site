@@ -1,3 +1,9 @@
+:root {
+  --color-primary: #1F3D2B;   /* verde escuro */
+  --color-bg: #F9FAF8;        /* branco quente */
+  --color-accent: #C8B89A;    /* bege premium */
+  --color-text: #1A1A1A;
+}
 /* RESET BÁSICO */
 * {
   margin: 0;
@@ -6,6 +12,13 @@
 }
 
 /* ESTILO GLOBAL */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
