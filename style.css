@@ -1,9 +1,10 @@
 :root {
   --color-primary: #1F3D2B;   /* verde escuro */
-  --color-bg: #F9FAF8        /* branco quente */
+  --color-bg: #F9FAF8;        /* branco quente (adicionei o ;) */
   --color-accent: #C8B89A;    /* bege premium */
   --color-text: #1A1A1A;
 }
+
 /* RESET BÁSICO */
 * {
   margin: 0;
@@ -19,7 +20,6 @@ body {
   color: var(--color-text);
 }
 
-
 /* SEÇÕES */
 section {
   max-width: 900px;
@@ -27,15 +27,10 @@ section {
   padding: 0 20px;
 }
 
-/* TÍTULOS */
+/* TÍTULOS (Agrupado e sem repetições) */
 h1, h2, h3 {
   font-family: 'Playfair Display', serif;
-  color: var(--color-primary);
-}
-
-p {
-  line-height: 1.7;
-  font-size: 1rem;
+  color: var(--color-primary); /* Todos começam com o verde do projeto */
 }
 
 h1 {
@@ -47,7 +42,7 @@ h2 {
   font-size: 22px;
   font-weight: normal;
   margin-bottom: 20px;
-  color: #555;
+  /* Se quiseres cinzento, deixa #555. Se quiseres verde, apaga a linha abaixo */
 }
 
 h3 {
@@ -57,6 +52,8 @@ h3 {
 
 /* TEXTOS */
 p {
+  line-height: 1.7;
+  font-size: 1rem;
   margin-bottom: 15px;
 }
 
@@ -68,6 +65,7 @@ ul, ol {
 li {
   margin-bottom: 8px;
 }
+
 /* HERO */
 .hero {
   text-align: center;
@@ -86,21 +84,22 @@ li {
 /* BOTÃO */
 .btn {
   display: inline-block;
-  background-color: #111;
+  background-color: var(--color-primary); /* Usei a tua cor premium aqui */
   color: #ffffff;
   padding: 14px 32px;
   text-decoration: none;
   font-weight: 600;
   border-radius: 6px;
-  border: 1px solid #111;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transition: all 0.3s ease;
+  border: 1px solid var(--color-primary);
 }
 
 .btn:hover {
-  background-color: #ffffff;
-  color: #111;
+  background-color: transparent;
+  color: var(--color-primary);
 }
+
 /* FORM */
 form {
   max-width: 500px;
@@ -112,6 +111,8 @@ input, textarea, select {
   padding: 10px;
   margin-top: 5px;
   font-family: inherit;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 textarea {
@@ -121,4 +122,5 @@ textarea {
 button.btn {
   cursor: pointer;
   border: none;
+  width: 100%; /* O botão do formulário fica melhor se for largo */
 }
