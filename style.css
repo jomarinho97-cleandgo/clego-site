@@ -1,6 +1,7 @@
+/* PASSO 1 — CORES E VARIÁVEIS */
 :root {
   --color-primary: #1F3D2B;   /* verde escuro */
-  --color-bg: #F9FAF8;        /* branco quente (adicionei o ;) */
+  --color-bg: #F9FAF8;        /* branco quente */
   --color-accent: #C8B89A;    /* bege premium */
   --color-text: #1A1A1A;
 }
@@ -12,115 +13,111 @@
   box-sizing: border-box;
 }
 
-/* ESTILO GLOBAL */
 body {
-  margin: 0;
   font-family: 'Inter', sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
+  line-height: 1.7;
 }
 
-/* SEÇÕES */
-section {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 0 20px;
+/* PASSO 3 — ESPAÇAMENTO PREMIUM */
+.section {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-/* TÍTULOS (Agrupado e sem repetições) */
+/* TÍTULOS */
 h1, h2, h3 {
   font-family: 'Playfair Display', serif;
-  color: var(--color-primary); /* Todos começam com o verde do projeto */
-}
-
-h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
-}
-
-h2 {
-  font-size: 22px;
-  font-weight: normal;
+  color: var(--color-primary);
   margin-bottom: 20px;
-  /* Se quiseres cinzento, deixa #555. Se quiseres verde, apaga a linha abaixo */
 }
 
-h3 {
-  font-size: 26px;
-  margin-bottom: 15px;
-}
+h1 { font-size: 56px; line-height: 1.2; }
+h3 { font-size: 32px; }
 
-/* TEXTOS */
+/* TEXTOS E LISTAS */
 p {
-  line-height: 1.7;
-  font-size: 1rem;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
 }
 
-/* LISTAS */
 ul, ol {
   margin-left: 20px;
-}
-
-li {
-  margin-bottom: 8px;
-}
-
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 100px 20px;
-}
-
-.hero h1 {
-  font-size: 56px;
-}
-
-.hero p {
-  font-size: 18px;
   margin-bottom: 30px;
 }
 
-/* BOTÃO */
+li {
+  margin-bottom: 12px;
+}
+
+/* PASSO 5 — HERO SECTION */
+.hero {
+  text-align: center;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  background-color: #ffffff; /* Fundo ligeiramente diferente para destacar o topo */
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+}
+
+/* PASSO 4 — BOTÕES */
 .btn {
   display: inline-block;
-  background-color: var(--color-primary); /* Usei a tua cor premium aqui */
+  padding: 16px 36px;
+  background-color: var(--color-accent);
   color: #ffffff;
-  padding: 14px 32px;
   text-decoration: none;
-  font-weight: 600;
   border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-weight: 600;
+  border: none;
   transition: all 0.3s ease;
-  border: 1px solid var(--color-primary);
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
 }
 
 .btn:hover {
-  background-color: transparent;
-  color: var(--color-primary);
+  background-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* FORM */
+/* FORMULÁRIO */
 form {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+form p {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: var(--color-primary);
 }
 
 input, textarea, select {
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  font-family: inherit;
+  padding: 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
-}
-
-textarea {
-  min-height: 100px;
+  font-family: inherit;
+  background-color: #fff;
 }
 
 button.btn {
-  cursor: pointer;
-  border: none;
-  width: 100%; /* O botão do formulário fica melhor se for largo */
+  width: 100%;
+  margin-top: 20px;
 }
