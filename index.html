@@ -2,33 +2,29 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cle&Go – Pulizie per Airbnb</title>
-  <link rel="stylesheet" href="style.css">
-
-</head>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
-  <!-- TOPO -->
- <section class="hero">
-  <h1>Cle&Go</h1>
-  <h2>Pulizie professionali per Airbnb e affitti brevi</h2>
-  <p>Check-out senza stress. Check-in perfetto.</p>
-  <a href="#contatti" class="btn">Richiedi una pulizia!</a>
-</section>
 
+  <section class="section hero">
+    <h1>Pulizia professionale,<br>senza complicazioni</h1>
+    <p>Servizi di pulizia affidabili per case, uffici e strutture ricettive.</p>
+    <a href="#contatti" class="btn">Richiedi una pulizia!</a>
+  </section>
 
-  <!-- SERVIZIO -->
-  <section>
+  <section class="section">
     <h3>Il servizio</h3>
     <p>
       Servizio specializzato nella pulizia post check-out per Airbnb
       e strutture ricettive a breve termine.
     </p>
-
     <ul>
       <li>Pulizia completa dell’alloggio</li>
       <li>Reset dell’appartamento</li>
@@ -38,8 +34,7 @@
     </ul>
   </section>
 
-  <!-- COME FUNZIONA -->
-  <section>
+  <section class="section">
     <h3>Come funziona</h3>
     <ol>
       <li>Invii la richiesta online</li>
@@ -49,18 +44,15 @@
     </ol>
   </section>
 
-  <!-- PREZZI -->
-  <section>
-    <h3>Prezzi trasparenti
-</h3>
+  <section class="section">
+    <h3>Prezzi trasparenti</h3>
     <p>
-      Standard — a partire da €60<br>
-      Premium — a partire da €80
+      <strong>Standard</strong> — a partire da €60<br>
+      <strong>Premium</strong> — a partire da €80
     </p>
   </section>
 
-  <!-- ZONA -->
-  <section>
+  <section class="section">
     <h3>Zona di servizio</h3>
     <p>
       Attualmente operiamo nella zona di Cologne e dintorni,
@@ -68,56 +60,42 @@
     </p>
   </section>
 
-  <!-- CONTATTI -->
-  <section id="contatti">
-  <h3>Richiedi una pulizia</h3>
+  <section id="contatti" class="section">
+    <h3>Richiedi una pulizia</h3>
+    <form name="richiesta-pulizia" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="richiesta-pulizia">
 
-  <form name="richiesta-pulizia" method="POST" data-netlify="true">
-    <input type="hidden" name="form-name" value="richiesta-pulizia">
-
-    <p>
-      <label>
-        Nome<br>
+      <p>
+        <label>Nome</label>
         <input type="text" name="nome" required>
-      </label>
-    </p>
+      </p>
 
-    <p>
-      <label>
-        Email<br>
+      <p>
+        <label>Email</label>
         <input type="email" name="email" required>
-      </label>
-    </p>
+      </p>
 
-    <p>
-      <label>
-        Indirizzo dell’alloggio<br>
+      <p>
+        <label>Indirizzo dell’alloggio</label>
         <input type="text" name="indirizzo" required>
-      </label>
-    </p>
+      </p>
 
-    <p>
-      <label>
-        Tipo di servizio<br>
+      <p>
+        <label>Tipo di servizio</label>
         <select name="servizio">
           <option>Standard</option>
           <option>Premium</option>
         </select>
-      </label>
-    </p>
+      </p>
 
-    <p>
-      <label>
-        Messaggio<br>
+      <p>
+        <label>Messaggio</label>
         <textarea name="messaggio"></textarea>
-      </label>
-    </p>
+      </p>
 
-    <p>
       <button type="submit" class="btn">Invia richiesta</button>
-    </p>
-  </form>
-</section>
+    </form>
+  </section>
 
 </body>
 </html>
