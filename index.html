@@ -55,4 +55,33 @@
       <input type="hidden" name="form-name" value="contatti-clego">
 
       <p>
-        <label
+        <label>Nome</label>
+        <input type="text" name="nome" required>
+      </p>
+
+      <p>
+        <label>Tipo di spazio</label>
+        <select name="tipo_spazio">
+          <option>Airbnb / B&B</option>
+          <option>Ufficio</option>
+          <option>Casa Privata</option>
+          <option>Altro</option>
+        </select>
+      </p>
+
+      <p>
+        <label>Indirizzo</label>
+        <input type="text" name="indirizzo" required>
+      </p>
+
+      <p>
+        <label>Messaggio</label>
+        <textarea name="messaggio" placeholder="Raccontaci di cosa hai bisogno..."></textarea>
+      </p>
+
+      <button type="submit" class="btn">Invia richiesta</button>
+    </form>
+  </section>
+
+</body>
+</html>
