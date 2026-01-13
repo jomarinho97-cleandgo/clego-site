@@ -19,6 +19,10 @@ body {
   color: var(--color-text);
   line-height: 1.7;
 }
+p {
+  margin-bottom: 18px;
+}
+
 
 /* 3. ESTRUTURA GLOBAL (SECÇÕES) */
 .section {
@@ -79,15 +83,17 @@ h1, h3 {
   border-radius: 4px;
   font-weight: 600;
   border: none;
-  transition: 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
   cursor: pointer;
   font-family: 'Inter', sans-serif;
 }
 
 .btn:hover {
   background-color: var(--color-accent);
-  transform: translateY(-2px);
+  transform: none;
 }
+
 
 /* 7. FORMULÁRIO */
 form {
@@ -129,17 +135,196 @@ button.btn {
 
 /* 8. LISTAS (SERVIÇOS E COMO FUNCIONA) */
 ul, ol {
-  margin-left: 20px;
   margin-bottom: 30px;
+  padding-left: 18px; /* controla o recuo de bullets/números */
 }
 
 li {
   margin-bottom: 12px;
-  padding-left: 10px;
+  padding-left: 0; /* evita desalinhamento */
 }
 
 /* Destaque para os preços */
 strong {
   color: var(--color-primary);
   font-weight: 600;
+}
+.hero {
+  background-color: #ffffff;
+}
+
+section.section:not(.hero):nth-of-type(even) {
+  background: rgba(31, 61, 43, 0.03);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+
+
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+  }
+
+  .section {
+    padding: 60px 18px;
+  }
+
+  .logo {
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
+}
+.coming-soon {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  margin-top: 30px;
+}
+/* CARDS / GRID */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.card h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* STEPS */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 25px;
+}
+
+.step {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.step-number {
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.step h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .steps { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+}
+.faq {
+  display: grid;
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.faq-item {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 22px;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.faq-item h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.faq-item p {
+  margin-bottom: 0;
+  color: #444;
+}
+/* FAQ ACCORDION */
+.faq {
+  display: grid;
+  gap: 16px;
+  margin-top: 25px;
+}
+
+.faq-item {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.04);
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--color-primary);
+}
+
+.faq-question:hover {
+  background: rgba(31, 61, 43, 0.03);
+}
+
+.faq-icon {
+  font-size: 22px;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 22px 22px;
+  color: #444;
+}
+
+/* estado aberto */
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg); /* + vira x (visualmente um -) */
 }
