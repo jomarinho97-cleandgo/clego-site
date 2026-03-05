@@ -98,7 +98,7 @@ Messaggio: ${messaggio || "-"}`,
 
     return { statusCode: 200, body: "OK" };
   } catch (err) {
-    console.error(err);
-    return { statusCode: 500, body: "ERROR: " + err.message };
-  }
+  console.error("ERR", err?.response?.body || err);
+  return { statusCode: 500, body: "ERROR: " + (err?.response?.body?.errors?.[0]?.message || err.message) };
+  }  
 };
