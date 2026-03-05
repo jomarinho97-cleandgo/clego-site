@@ -56,13 +56,13 @@ h1, h3 {
 /* 5. HERO (TOPO DO SITE) */
 .hero {
   text-align: center;
-  padding-top: 100px;
-  padding-bottom: 100px;
-  background-color: #ffffff; /* Fundo branco puro para destacar do resto */
+  padding-top: 45px;
+  padding-bottom: 60px;
+  background-color: #ffffff;
 }
 
 .hero h1 {
-  font-size: 48px;
+  font-size: 46px;
   line-height: 1.2;
 }
 
@@ -327,4 +327,16 @@ section.section:not(.hero):nth-of-type(even) {
 
 .faq-item.active .faq-icon {
   transform: rotate(45deg); /* + vira x (visualmente um -) */
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.logo-img {
+  height: 180px;
+  width: auto;
+  display: block;
+  margin: 0 auto 18px auto;
 }
