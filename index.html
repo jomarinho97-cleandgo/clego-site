@@ -232,6 +232,12 @@
           <label>Messaggio</label>
           <textarea name="messaggio"></textarea>
         </p>
+        <input type="hidden" name="form_started_at" id="form-started-at">
+
+        <p style="display:none;">
+          <label>Leave this field empty</label>
+          <input type="text" name="company" autocomplete="off">
+        </p>
 
         <button type="submit" class="btn">Invia richiesta</button>
         <p id="form-status"></p>
@@ -255,7 +261,7 @@
 
   const form = document.getElementById("lead-form");
   const status = document.getElementById("form-status");
-
+  document.getElementById("form-started-at").value = Date.now();
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 

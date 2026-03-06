@@ -33,6 +33,25 @@ exports.handler = async (event) => {
     }
 
     const data = JSON.parse(event.body || "{}");
+    const company = (data.company || "").trim();
+    const startedAt = Number(data.form_started_at || 0);
+    const now = Date.now();
+
+    if (company) {
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ok: true }),
+      };
+    }
+
+    if (!startedAt || now - startedAt < 3000) {
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ok: true }),
+      };
+    }
 
     const nome = (data.nome || "").trim();
     const email = (data.email || "").trim();
