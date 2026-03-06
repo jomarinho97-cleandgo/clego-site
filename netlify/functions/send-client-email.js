@@ -52,6 +52,23 @@ exports.handler = async (event) => {
         body: JSON.stringify({ ok: true }),
       };
     }
+    if (process.env.LEADS_WEBHOOK_URL) {
+      await fetch(process.env.LEADS_WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+    }
+
+await fetch(process.env.LEADS_WEBHOOK_URL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(data)
+});
 
     const nome = (data.nome || "").trim();
     const email = (data.email || "").trim();
