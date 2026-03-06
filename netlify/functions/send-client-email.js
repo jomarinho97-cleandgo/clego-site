@@ -1,14 +1,11 @@
-// netlify/functions/send-client-email.js
 const sgMail = require("@sendgrid/mail");
 
-// Node 18+ em Netlify tem fetch nativo
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 function buildClientEmail({ nome, onboardingUrl, phone }) {
   const subject = "CLEANDGO – Prossimi step (PDF + Onboarding)";
 
-  const text =
-`Gentile ${nome || "Cliente"},
+  const text = `Gentile ${nome || "Cliente"},
 
 grazie per averci contattato.
 
@@ -31,29 +28,35 @@ Servizi strutturati per affitti brevi`;
 
 exports.handler = async (event) => {
   try {
-    const payload = JSON.parse(event.body || "{}");
+    if (event.httpMethod !== "POST") {
+      return { statusCode: 405, body: "Method Not Allowed" };
+    }
 
-    // Netlify Forms webhook costuma enviar payload.payload.data
-    const data = payload?.payload?.data ? payload.payload.data : payload;
+    const data = JSON.parse(event.body || "{}");
 
-    const nome = (data?.nome || "").trim();
-    const email = (data?.email || "").trim();
-    const indirizzo = (data?.indirizzo || "").trim();
-    const tipologia = (data?.tipologia || "").trim();
-    const messaggio = (data?.messaggio || "").trim();
+    const nome = (data.nome || "").trim();
+    const email = (data.email || "").trim();
+    const indirizzo = (data.indirizzo || "").trim();
+    const tipologia = (data.tipologia || "").trim();
+    const messaggio = (data.messaggio || "").trim();
 
-    if (!email) return { statusCode: 400, body: "Missing client email" };
+    if (!email) {
+      return { statusCode: 400, body: "Missing client email" };
+    }
 
     const onboardingUrl = process.env.ONBOARDING_FORM_URL;
     const pdfUrl = process.env.SCHEDA_PDF_URL;
     const phone = process.env.CLEANDGO_PHONE || "+39 3793346947";
+    const fromEmail = process.env.SENDGRID_FROM_EMAIL;
+    const ownerEmail = process.env.OWNER_NOTIFY_EMAIL;
 
     if (!onboardingUrl) throw new Error("Missing env ONBOARDING_FORM_URL");
     if (!pdfUrl) throw new Error("Missing env SCHEDA_PDF_URL");
+    if (!fromEmail) throw new Error("Missing env SENDGRID_FROM_EMAIL");
 
-    // Fetch PDF para anexar
     const res = await fetch(pdfUrl);
     if (!res.ok) throw new Error("Cannot fetch PDF: " + pdfUrl);
+
     const arrayBuffer = await res.arrayBuffer();
     const base64 = Buffer.from(arrayBuffer).toString("base64");
 
@@ -61,7 +64,7 @@ exports.handler = async (event) => {
 
     const clientMsg = {
       to: email,
-      from: process.env.SENDGRID_FROM_EMAIL,
+      from: fromEmail,
       subject,
       text,
       attachments: [
@@ -74,15 +77,12 @@ exports.handler = async (event) => {
       ],
     };
 
-    // (Opcional) notificação para ti
-    const ownerEmail = process.env.OWNER_NOTIFY_EMAIL;
     if (ownerEmail) {
       const ownerMsg = {
         to: ownerEmail,
-        from: process.env.SENDGRID_FROM_EMAIL,
+        from: fromEmail,
         subject: `NUOVO LEAD – ${nome || "senza nome"} – ${tipologia || "n/d"}`,
-        text:
-`Nuovo contatto dal sito.
+        text: `Nuovo contatto dal sito.
 
 Nome: ${nome || "-"}
 Email: ${email}
@@ -96,9 +96,20 @@ Messaggio: ${messaggio || "-"}`,
       await sgMail.send(clientMsg);
     }
 
-    return { statusCode: 200, body: "OK" };
+    return {
+      statusCode: 200,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ok: true }),
+    };
   } catch (err) {
-  console.error("ERR", err?.response?.body || err);
-  return { statusCode: 500, body: "ERROR: " + (err?.response?.body?.errors?.[0]?.message || err.message) };
-  }  
+    console.error("ERR", err?.response?.body || err);
+    return {
+      statusCode: 500,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ok: false,
+        error: err?.response?.body?.errors?.[0]?.message || err.message,
+      }),
+    };
+  }
 };

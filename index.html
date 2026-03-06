@@ -18,7 +18,7 @@
     <div class="logo">
       <img src="clego-logo.png" alt="Cle&Go Logo" class="logo-img">
     </div>
-    <h1><h1>Pulizia e reset tra un ospite e l’altro</h1></h1>
+    <h1>Pulizia e reset tra un ospite e l’altro</h1>
     <p>Cle&Go permette agli host di affitti brevi e B&B di delegare completamente il turnover dei loro appartamenti, grazie a un protocollo standardizzato con checklist e documentazione fotografica verificabile.</p>
     <a href="#contatti" class="btn">Richiedi informazioni</a>
 
@@ -123,9 +123,9 @@
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>
-            <p>Sì. Utilizziamo attrezzatura e prodotti professionali Cle&Go per garantire standard costanti e risultati replicabili.</p>
-          </p>
+          
+          <p>Sì. Utilizziamo attrezzatura e prodotti professionali Cle&Go per garantire standard costanti e risultati replicabili.</p>
+          
         </div>
       </div>
 
@@ -135,9 +135,9 @@
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>
-            <p>Operiamo in totale autonomia. Il nostro sistema è progettato per eliminare la necessità di supervisione da parte dell’host. È sufficiente fornire le modalità di accesso all’alloggio.</p>
-          </p>
+          
+          <p>Operiamo in totale autonomia. Il nostro sistema è progettato per eliminare la necessità di supervisione da parte dell’host. È sufficiente fornire le modalità di accesso all’alloggio.</p>
+          
         </div>
       </div>
 
@@ -159,9 +159,9 @@
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>
-            <p>Ogni intervento segue un protocollo standardizzato. A fine lavoro ricevi checklist e report fotografico verificabile.</p>
-          </p>
+          
+          <p>Ogni intervento segue un protocollo standardizzato. A fine lavoro ricevi checklist e report fotografico verificabile.</p>
+          
         </div>
       </div>
 
@@ -201,84 +201,90 @@
 </section>
   <section id="contatti" class="section">
     <h3>Contatti</h3>
-   
+      <form id="lead-form">
+        <p>
+          <label>Nome</label>
+          <input type="text" name="nome" required>
+        </p>
 
-   
-    <form name="richiesta-pulizia" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="richiesta-pulizia">
+        <p>
+          <label>Email</label>
+          <input type="email" name="email" required>
+        </p>
 
-      <p>
-        <label>Nome</label>
-        <input type="text" name="nome" required>
-      </p>
+        <p>
+          <label>Indirizzo del B&B</label>
+          <input type="text" name="indirizzo" required>
+        </p>
 
-      <p>
-        <label>Email</label>
-        <input type="email" name="email" required>
-      </p>
+        <p>
+          <label>Tipologia dell’alloggio</label>
+          <select name="tipologia" required>
+            <option value="" disabled selected>Seleziona…</option>
+            <option>Monolocale</option>
+            <option>Bilocale (1 camera)</option>
+            <option>Trilocale (2 camere)</option>
+            <option>3+ camere</option>
+          </select>
+        </p>
 
-      <p>
-        <label>Indirizzo del B&B</label>
-        <input type="text" name="indirizzo" required>
-      </p>
+        <p>
+          <label>Messaggio</label>
+          <textarea name="messaggio"></textarea>
+        </p>
 
-      <p>
-        <label>Tipologia dell’alloggio</label>
-        <select name="tipologia" required>
-          <option value="" disabled selected>Seleziona…</option>
-          <option>Monolocale</option>
-          <option>Bilocale (1 camera)</option>
-          <option>Trilocale (2 camere)</option>
-          <option>3+ camere</option>
-        </select>
-      </p>
-
-      <!--
-      <p>
-        <label>Servizi extra (opzionale)</label>
-        <select name="extra">
-          <option value="">Nessuno</option>
-          <option>Gestione biancheria</option>
-          <option>Rifornimento prodotti (saponi, carta, ecc.)</option>
-        </select>
-      </p>
-
-      <p>
-        <label>Data check-out</label>
-        <input type="date" name="data_checkout" required>
-      </p>
-
-      <p>
-        <label>Fascia oraria preferita (opzionale)</label>
-        <select name="fascia_oraria">
-          <option value="">Indifferente</option>
-          <option>Mattina (08:00–12:00)</option>
-          <option>Pomeriggio (12:00–16:00)</option>
-          <option>Tardo pomeriggio (16:00–20:00)</option>
-        </select>
-      </p>
-      -->
-      <p>
-        <label>Messaggio</label>
-        <textarea name="messaggio"></textarea>
-      </p>
-
-      <button type="submit" class="btn">Invia richiesta</button>
-
-    </form>
-  
+        <button type="submit" class="btn">Invia richiesta</button>
+        <p id="form-status"></p>
+      </form>
+        
+      
+  <!--
     <p class="coming-soon">
        Stiamo preparando l’apertura del servizio.<br>
        Torna a trovarci a breve.
     </p>
-  </section>
-  <script>
-    document.querySelectorAll('.faq-question').forEach(button => {
-      button.addEventListener('click', () => {
-        const item = button.parentElement;
-        item.classList.toggle('active');
+    -->
+</section>
+    <script>
+      document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          item.classList.toggle('active');
+        });
       });
-    });
+
+      const form = document.getElementById("lead-form");
+      const status = document.getElementById("form-status");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        status.textContent = "Invio in corso...";
+
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+
+        try {
+          const res = await fetch("/.netlify/functions/send-client-email", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          const result = await res.json();
+
+          if (!res.ok || !result.ok) {
+            throw new Error(result.error || "Errore durante l'invio");
+          }
+
+          status.textContent = "Richiesta inviata. Controlla la tua email.";
+          form.reset();
+        } catch (err) {
+          status.textContent = "Errore: " + err.message;
+        }
+      });
   </script>
 
 </body>
