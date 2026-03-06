@@ -270,8 +270,7 @@
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
 
-    console.log("SUBMIT START");
-    console.log(payload);
+    
 
     try {
       const res = await fetch("/.netlify/functions/send-client-email", {
@@ -283,17 +282,17 @@
       });
 
       const result = await res.json();
-      console.log("RESULT", result);
-
+      
       if (!res.ok || !result.ok) {
         throw new Error(result.error || "Errore durante l'invio");
       }
 
-      console.log("SUCCESS");
+      
       status.textContent = "Richiesta inviata. Controlla la tua email.";
       form.reset();
+      document.getElementById("form-started-at").value = Date.now();
     } catch (err) {
-      console.log("ERROR", err);
+    
       status.textContent = "Errore: " + err.message;
     }
   });
