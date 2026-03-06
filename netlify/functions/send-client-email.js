@@ -7,7 +7,7 @@ function buildClientEmail({ nome, onboardingUrl, phone }) {
 
   const text = `Gentile ${nome || "Cliente"},
 
-grazie per averci contattato.
+Grazie per averci contattato.
 
 In allegato trova la scheda del servizio CLEANDGO (cosa include il turnover e gli extra disponibili).
 
