@@ -245,47 +245,53 @@
     </p>
     -->
 </section>
-    <script>
-      document.querySelectorAll('.faq-question').forEach(button => {
-        button.addEventListener('click', () => {
-          const item = button.parentElement;
-          item.classList.toggle('active');
-        });
+<script>
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.parentElement;
+      item.classList.toggle('active');
+    });
+  });
+
+  const form = document.getElementById("lead-form");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    status.textContent = "Invio in corso...";
+
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+
+    console.log("SUBMIT START");
+    console.log(payload);
+
+    try {
+      const res = await fetch("/.netlify/functions/send-client-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
       });
 
-      const form = document.getElementById("lead-form");
-      const status = document.getElementById("form-status");
+      const result = await res.json();
+      console.log("RESULT", result);
 
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+      if (!res.ok || !result.ok) {
+        throw new Error(result.error || "Errore durante l'invio");
+      }
 
-        status.textContent = "Invio in corso...";
-
-        const formData = new FormData(form);
-        const payload = Object.fromEntries(formData.entries());
-
-        try {
-          const res = await fetch("/.netlify/functions/send-client-email", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(payload)
-          });
-
-          const result = await res.json();
-
-          if (!res.ok || !result.ok) {
-            throw new Error(result.error || "Errore durante l'invio");
-          }
-
-          status.textContent = "Richiesta inviata. Controlla la tua email.";
-          form.reset();
-        } catch (err) {
-          status.textContent = "Errore: " + err.message;
-        }
-      });
-  </script>
+      console.log("SUCCESS");
+      status.textContent = "Richiesta inviata. Controlla la tua email.";
+      form.reset();
+    } catch (err) {
+      console.log("ERROR", err);
+      status.textContent = "Errore: " + err.message;
+    }
+  });
+</script>
 
 </body>
 </html>
